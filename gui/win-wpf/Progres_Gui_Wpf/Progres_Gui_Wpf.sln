@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progres_Gui_Wpf", "Progres_Gui_Wpf\Progres_Gui_Wpf.csproj", "{A670BC47-FC69-4DA5-AA04-D147DDB25772}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A670BC47-FC69-4DA5-AA04-D147DDB25772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A670BC47-FC69-4DA5-AA04-D147DDB25772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A670BC47-FC69-4DA5-AA04-D147DDB25772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A670BC47-FC69-4DA5-AA04-D147DDB25772}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {582AA0A6-5C23-429F-BDF0-BAFE94CEE125}
+	EndGlobalSection
+EndGlobal
