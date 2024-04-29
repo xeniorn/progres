@@ -7,10 +7,20 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="local:TextInputBox">
+            <Setter Property="Margin" Value="2"></Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <local:TextInputBox Label="Models path" Text="{Binding DownloadedModelsPath}"></local:TextInputBox>
+        <WrapPanel>
+            <local:TextInputBox MinWidth="200" Label="Models path" Text="{Binding DownloadedModelsPath}"></local:TextInputBox>
+            <local:TextInputBox MinWidth="50" Label="Docker image" Text="{Binding DockerImageName}"></local:TextInputBox>
+            <Button Content="SetupDockerImage"></Button>
+
+        </WrapPanel>
     </Grid>
 </UserControl>

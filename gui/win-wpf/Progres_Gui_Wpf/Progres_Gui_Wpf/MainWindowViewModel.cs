@@ -123,7 +123,7 @@ public class MainWindowViewModel
 
     public string SearchOutput { get; set; } = string.Empty;
 
-    public string DockerImageName { get; set; } = "progres";
+    public string DockerImageName { get; set; } = "xeniorn/progres";
     public string ProgresSearchExtraArgs { get; set; } = string.Empty;
     public ObservableCollection<ProgresSearchInputContainer> SearchInputs { get; } = [];
     public string ActionButtonText { get; set; } = "Uninitialized";
