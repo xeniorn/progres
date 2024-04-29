@@ -101,6 +101,7 @@ public class MainWindowViewModel
                            SelectedSearchDbOption,
                            DownloadedModelsPath,
                            DockerImageName,
+                           ProgresSearchExtraArgs,
                            token).WithCancellation(token))
         {
             switch (chunk.Type)
@@ -127,19 +128,6 @@ public class MainWindowViewModel
     public string ProgresSearchExtraArgs { get; set; } = string.Empty;
     public ObservableCollection<ProgresSearchInputContainer> SearchInputs { get; } = [];
     public string ActionButtonText { get; set; } = "Uninitialized";
-}
-
-public enum State
-{
-    Unknown,
-    WaitingToRun,
-    Cancelling,
-    Running
-}
-
-[AddINotifyPropertyChangedInterface]
-public class ProgresSearchInputContainer
-{
-    public string Path { get; set; } = null!;
-    public bool Exists => !string.IsNullOrWhiteSpace(Path) && File.Exists(Path);
+    public ProgresWpfToolTips ToolTips { get; } = new ();
+    public string Title { get; } = $"Progres UI";
 }

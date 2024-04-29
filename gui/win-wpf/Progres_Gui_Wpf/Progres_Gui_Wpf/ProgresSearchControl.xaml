@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Progres_Gui_Wpf"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="400" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -25,7 +25,15 @@
                     <Label Content="Search Db"></Label>
                     <ComboBox Grid.Row="1" ItemsSource="{Binding SearchDbOptions}" SelectedItem="{Binding SelectedSearchDbOption}"></ComboBox>
                 </StackPanel>
-                <local:TextInputBox Grid.Row="1" Label="Extra search args" Text="{Binding ProgresSearchExtraArgs}"></local:TextInputBox>
+                <local:TextInputBox Grid.Row="1" Label="Extra search args" Text="{Binding ProgresSearchExtraArgs}">
+                    <local:TextInputBox.ToolTip>
+                        <Border>
+                        <TextBox MaxWidth="400" TextWrapping="Wrap" Text="{Binding ToolTips.SearchArgs, Mode=OneTime}">
+                            <TextBox.VerticalScrollBarVisibility>Auto</TextBox.VerticalScrollBarVisibility>
+                        </TextBox>
+                        </Border>
+                    </local:TextInputBox.ToolTip>
+                </local:TextInputBox>
         </Grid>
             
             

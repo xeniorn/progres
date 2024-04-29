@@ -19,7 +19,7 @@
         <WrapPanel>
             <local:TextInputBox MinWidth="200" Label="Models path" Text="{Binding DownloadedModelsPath}"></local:TextInputBox>
             <local:TextInputBox MinWidth="50" Label="Docker image" Text="{Binding DockerImageName}"></local:TextInputBox>
-            <Button Content="SetupDockerImage"></Button>
+            <Button Content="Install Docker" Click="InstallDocker_OnClick"></Button>
 
         </WrapPanel>
     </Grid>

@@ -41,6 +41,7 @@ public class ProgresRunner
         string searchDb,
         string progresDataPath,
         string dockerImage,
+        string extraArguments = "",
         CancellationToken? cancellationToken = null)
     {
         var queryList = queryPaths
@@ -98,7 +99,7 @@ public class ProgresRunner
 
         var argsStringDocker = $"run {extraMountSpecifier} -v {progresDataPath}:{dataInDocker} -t {Q(dockerImage)}";
         var progresProgram = "progres";
-        var argsStringProgres = $"search {querySpecifier} -t {Q(searchDb)}";
+        var argsStringProgres = $"search {querySpecifier} -t {Q(searchDb)} {extraArguments}";
 
         var argsString = $"{argsStringDocker} {progresProgram} {argsStringProgres}";
 
