@@ -1,10 +1,7 @@
-using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Security.AccessControl;
 using System.Windows;
+using ProcessHelperLib;
 using PropertyChanged;
 
 namespace Progres_Gui_Wpf;
@@ -106,11 +103,11 @@ public class MainWindowViewModel
         {
             switch (chunk.Type)
             {
-                case RunProcessFullAsyncChunkType.ErrorStream or RunProcessFullAsyncChunkType.OutputStream:
+                case AsyncProcessRunnerResponseChunkType.ErrorStream or AsyncProcessRunnerResponseChunkType.OutputStream:
                     SearchOutput += chunk.Content;
                     break;
-                case RunProcessFullAsyncChunkType.ExitCode:
-                    exitCode = int.Parse(chunk.Content);
+                case AsyncProcessRunnerResponseChunkType.ExitCode:
+                    exitCode = int.Parse(chunk.Content as string);
                     if (exitCode == ProcessRunner.CancelledProcessExitCode)
                     {
                         SearchOutput += "\n\n########### Task was cancelled! ###########\n\n";

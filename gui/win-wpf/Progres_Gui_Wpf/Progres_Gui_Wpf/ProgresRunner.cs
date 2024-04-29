@@ -1,4 +1,5 @@
 using System.IO;
+using ProcessHelperLib;
 
 namespace Progres_Gui_Wpf;
 
@@ -10,33 +11,7 @@ public class ProgresRunner
         return $"\"{input}\"";
     }
 
-    public async Task<(bool success, string res)> RunSearchProcess(
-        string queryPdbPath, 
-        string searchDb, 
-        string progresDataPath, 
-        string dockerImage, 
-        CancellationToken? cancellationToken = null)
-    {
-        var program = "docker";
-
-        const string dataInDocker = @"/persist/progres";
-
-        if (!Directory.Exists(progresDataPath)) Directory.CreateDirectory(progresDataPath);
-
-        var argsStringDocker = $"run -v {progresDataPath}:{dataInDocker} -t {Q(dockerImage)}";
-        var progresProgram = "progres";
-        var argsStringProgres = $"search -q {Q(queryPdbPath)} -t {Q(searchDb)}";
-
-        var argsString = $"{argsStringDocker} {progresProgram} {argsStringProgres}";
-
-        var (exitCode, outdata) = await ProcessRunner.RunProcessAsync("docker", argsString, cancellationTokenInput: cancellationToken);
-
-        const int successCode = 0;
-
-        return (exitCode == successCode, string.Join("\n", outdata));
-    }
-
-    public async IAsyncEnumerable<RunProcessFullAsyncChunk> RunSearchProcessAsync(
+    public async IAsyncEnumerable<AsyncProcessRunnerResponseChunk> RunSearchProcessAsync(
         IEnumerable<string> queryPaths,
         string searchDb,
         string progresDataPath,
@@ -103,7 +78,7 @@ public class ProgresRunner
 
         var argsString = $"{argsStringDocker} {progresProgram} {argsStringProgres}";
 
-        var asyncEnum = ProcessRunner.RunProcessFullAsync("docker", argsString, cancellationTokenInput: cancellationToken);
+        var asyncEnum = ProcessRunner.RunProcessAsync("docker", argsString, cancellationTokenInput: cancellationToken);
 
         await foreach (var runProcessFullAsyncChunk in asyncEnum)
         {
