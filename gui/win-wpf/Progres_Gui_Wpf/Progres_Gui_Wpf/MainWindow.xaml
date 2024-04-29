@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progres_Gui_Wpf"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <Expander Grid.Row="0" Header="Settings">
+            <local:SettingsControl x:Name="SettingsControl"></local:SettingsControl>
+        </Expander>
+            
+        <TabControl Grid.Row="1">
+            <TabItem Header="Search">
+                <local:ProgresSearchControl x:Name="ProgresSearchControl"></local:ProgresSearchControl>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -19,6 +19,12 @@ namespace Progres_Gui_Wpf
         public MainWindow()
         {
             InitializeComponent();
+            vm = new MainWindowViewModel();
+            DataContext = vm;
+            ProgresSearchControl.vm = vm;
+            SettingsControl.vm = vm;
         }
+
+        public MainWindowViewModel vm { get; set; }
     }
 }
